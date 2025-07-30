@@ -1,6 +1,12 @@
-@import "tailwindcss/preflight"; /* This replaces @tailwind base */
-@import "tailwindcss/theme"; /* Optional - if you need theme customization */
+/* Importing Tailwind preflight styles */
+@import "tailwindcss/preflight";
+
+/* Optional: Tailwind theme customization (you can add your customizations here) */
+@import "tailwindcss/theme";
+
+/* Importing Tailwind utilities */
 @import "tailwindcss/utilities";
+
 @import "tailwindcss";
 
 .nav-link {
