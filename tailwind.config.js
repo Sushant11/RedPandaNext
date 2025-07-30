@@ -1,19 +1,11 @@
-/** @type {import('tailwindcss').Config} */
-const tailwindConfig = {
+module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}", // adjust if your paths are different
-    "./app/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: "#1E40AF", // change this to your preferred primary color
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
-
-export default tailwindConfig;
