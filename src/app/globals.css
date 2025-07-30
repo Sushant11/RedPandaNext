@@ -1,13 +1,14 @@
 /* Importing Tailwind preflight styles */
 @import "tailwindcss/preflight";
 
-/* Optional: Tailwind theme customization (you can add your customizations here) */
-@import "tailwindcss/theme";
-
 /* Importing Tailwind utilities */
 @import "tailwindcss/utilities";
 
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #cd1c26;
+}
 
 .nav-link {
   position: relative;
@@ -50,7 +51,11 @@
 
 /* Slick carousel overrides */
 .slick-track {
-  padding: 20px;
+  padding: 20px !important;
+}
+
+.slick-list {
+  height: 350px;
 }
 
 .slick-next:before,
@@ -59,7 +64,7 @@
   font-size: 20px;
   line-height: 1;
   opacity: 0.75;
-  color: #cd1c26;
+  color: #cd1c26 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

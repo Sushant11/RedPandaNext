@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import SmoothScrollLink from "../lib/Smoothscroll";
 
 export default function Hero() {
   return (
@@ -18,12 +19,12 @@ export default function Hero() {
             with smart, tailored solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
+            <SmoothScrollLink
               href="#contact"
               className="bg-primary hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center"
             >
               Get Pre-Approved
-            </Link>
+            </SmoothScrollLink>
             <a
               href="tel:+61484941980"
               className="bg-transparent hover:bg-white hover:text-primary border-2 border-white text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center"
