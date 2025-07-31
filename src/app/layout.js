@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import BackToTop from "./lib/BackToTop";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <Analytics />
+        <SpeedInsights />
         <Toaster position="bottom-center" />
         <main>{children}</main>
         <Footer />
