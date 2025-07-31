@@ -52,9 +52,9 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <Analytics />
-        <SpeedInsights />
         <Toaster position="bottom-center" />
         <main>{children}</main>
+        <SpeedInsights />
         <Footer />
         <BackToTop />
       </body>
