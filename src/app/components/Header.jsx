@@ -1,10 +1,11 @@
-"use client"; // Add this directive at the top
+"use client";
 
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -19,6 +20,7 @@ const navLinks = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +35,7 @@ export default function Header() {
       });
 
       setActiveSection(current || "home");
+      setScrolled(window.scrollY > 200);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -57,18 +60,26 @@ export default function Header() {
   };
 
   return (
-    <nav className="fixed w-full bg-white shadow-md z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center">
-          <img
-            src="/mainlogo.png"
-            alt="Red Panda Finance Logo"
-            className="w-10 h-10 object-contain mr-2"
-          />
-          <span className="text-xl font-bold text-gray-800">
-            Red Panda Finance
-          </span>
-        </div>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
+      <div
+        className={`container mx-auto px-4 py-3 flex justify-between items-center transition-colors duration-300 ${
+          scrolled ? "text-gray-700" : "text-white"
+        }`}
+      >
+        <Link href="/">
+          <div className="flex items-center">
+            <img
+              src={scrolled ? "/mainlogo.png" : "/mainlogoWhite.png"}
+              alt="Red Panda Finance Logo"
+              className="w-10 h-10 object-contain mr-2"
+            />
+            <span className="text-xl font-bold">Red Panda Finance</span>
+          </div>
+        </Link>
 
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
@@ -77,7 +88,7 @@ export default function Header() {
               href={`#${link.id}`}
               className={`nav-link ${
                 activeSection === link.id ? "active" : ""
-              } text-gray-700 hover:text-primary transition`}
+              } hover:text-primary transition`}
               onClick={(e) => {
                 e.preventDefault();
                 smoothScroll(`#${link.id}`);
@@ -89,23 +100,27 @@ export default function Header() {
         </div>
 
         <button
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="md:hidden focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <FontAwesomeIcon
             icon={mobileMenuOpen ? faTimes : faBars}
-            className="text-2xl"
+            className="text-2xl transistion"
           />
         </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white py-2 px-4 shadow-lg">
+        <div
+          className={`md:hidden py-2 px-4 transition-colors duration-300 ${
+            scrolled ? "bg-white text-gray-700" : "bg-black text-white"
+          }`}
+        >
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
-              className="block py-2 text-gray-700 hover:text-primary transition"
+              className="block py-4 hover:text-primary transition"
               onClick={(e) => {
                 e.preventDefault();
                 smoothScroll(`#${link.id}`);

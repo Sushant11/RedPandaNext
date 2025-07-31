@@ -1,3 +1,6 @@
+"use client"; // Add this directive at the top
+
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -8,6 +11,49 @@ import {
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons"; // Import Instagram icon
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    loanType: "first-home",
+    loanAmount: "500000",
+    state: "vic",
+    firstHome: "yes",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "radio" ? (checked ? value : prev[name]) : value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+    console.log(formData);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.status === 200) {
+        setStatus("Message Sent!");
+      } else {
+        setStatus(data.message || "Something went wrong.");
+      }
+    } catch (err) {
+      setStatus("Something went wrong.");
+    }
+  };
+
   return (
     <section id="contact" className="section py-20 bg-slate-800 text-white">
       <div className="container mx-auto px-4">
@@ -24,7 +70,10 @@ export default function Contact() {
 
         <div className="flex flex-col lg:flex-row gap-12">
           <div className="lg:w-1/2 w-full">
-            <form className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -35,6 +84,10 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   placeholder="John Smith"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
@@ -48,8 +101,11 @@ export default function Contact() {
                   Email Address
                 </label>
                 <input
+                  name="email"
                   type="email"
-                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   placeholder="john@example.com"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
@@ -64,7 +120,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="tel"
-                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   placeholder="(555) 123-4567"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
@@ -79,12 +137,23 @@ export default function Contact() {
                 </label>
                 <select
                   id="loan-type"
+                  name="loanType"
+                  value={formData.loanType}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                  <option value="first-home">First Home</option>
-                  <option value="refinance">Refinance</option>
-                  <option value="investment">Investment</option>
-                  <option value="commercial">Commercial</option>
+                  <option value="first-home" className="text-gray-600">
+                    First Home
+                  </option>
+                  <option value="refinance" className="text-gray-600">
+                    Refinance
+                  </option>
+                  <option value="investment" className="text-gray-600">
+                    Investment
+                  </option>
+                  <option value="commercial" className="text-gray-600">
+                    Commercial
+                  </option>
                 </select>
               </div>
 
@@ -96,12 +165,14 @@ export default function Contact() {
                   Property Value or Loan Amount
                 </label>
                 <input
-                  type="number"
                   id="loan-amount"
+                  name="loanAmount"
+                  type="number"
+                  value={formData.loanAmount}
+                  onChange={handleChange}
                   min="100000"
                   max="5000000"
                   step="10000"
-                  defaultValue="500000"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
               </div>
@@ -115,16 +186,35 @@ export default function Contact() {
                 </label>
                 <select
                   id="state"
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                  <option value="vic">Victoria</option>
-                  <option value="nsw">New South Wales</option>
-                  <option value="qld">Queensland</option>
-                  <option value="wa">Western Australia</option>
-                  <option value="sa">South Australia</option>
-                  <option value="tas">Tasmania</option>
-                  <option value="act">ACT</option>
-                  <option value="nt">Northern Territory</option>
+                  <option value="vic" className="text-gray-600">
+                    Victoria
+                  </option>
+                  <option value="nsw" className="text-gray-600">
+                    New South Wales
+                  </option>
+                  <option value="qld" className="text-gray-600">
+                    Queensland
+                  </option>
+                  <option value="wa" className="text-gray-600">
+                    Western Australia
+                  </option>
+                  <option value="sa" className="text-gray-600">
+                    South Australia
+                  </option>
+                  <option value="tas" className="text-gray-600">
+                    Tasmania
+                  </option>
+                  <option value="act" className="text-gray-600">
+                    ACT
+                  </option>
+                  <option value="nt" className="text-gray-600">
+                    Northern Territory
+                  </option>
                 </select>
               </div>
 
@@ -140,8 +230,10 @@ export default function Contact() {
                     <input
                       type="radio"
                       id="first-home-yes"
-                      name="first-home"
+                      name="firstHome"
                       value="yes"
+                      checked={formData.firstHome === "yes"}
+                      onChange={handleChange}
                       className="h-4 w-4 text-red-500 focus:ring-2 focus:ring-white"
                     />
                     <label htmlFor="first-home-yes" className="ml-2 text-white">
@@ -152,9 +244,10 @@ export default function Contact() {
                     <input
                       type="radio"
                       id="first-home-no"
-                      name="first-home"
+                      name="firstHome"
                       value="no"
-                      defaultChecked
+                      checked={formData.firstHome === "no"}
+                      onChange={handleChange}
                       className="h-4 w-4 text-red-500 focus:ring-2 focus:ring-white"
                     />
                     <label htmlFor="first-home-no" className="ml-2 text-white">
@@ -174,6 +267,9 @@ export default function Contact() {
                 <textarea
                   id="message"
                   rows={4}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Tell us about your mortgage needs..."
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 ></textarea>

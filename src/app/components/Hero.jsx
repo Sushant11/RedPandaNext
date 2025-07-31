@@ -1,16 +1,32 @@
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import SmoothScrollLink from "../lib/Smoothscroll";
 
 export default function Hero() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 100); // slight delay for effect
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
       className="hero section h-screen flex items-center pt-16"
     >
       <div className="container mx-auto px-4 text-white">
-        <div className="max-w-2xl">
+        <div
+          className={`max-w-2xl transform transition-all duration-1000 ease-out ${
+            loaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
+        >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Smart Mortgage Solutions for Melbourne Homebuyers
           </h1>

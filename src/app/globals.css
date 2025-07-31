@@ -35,7 +35,7 @@
 
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80");
+    url("/bannerimg.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -74,4 +74,11 @@
   .slick-next {
     display: none !important;
   }
+}
+
+select option:hover {
+  background-color: #cd1c26 !important;
+  /* Red background on hover */
+  color: white;
+  /* White text color on hover */
 }
