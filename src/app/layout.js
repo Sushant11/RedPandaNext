@@ -11,6 +11,8 @@ export const metadata = {
   title: "Red Panda Finance | Melbourne Mortgage Brokers",
   description:
     "Helping home buyers and investors navigate their property journey",
+  keywords:
+    "mortgage brokers Melbourne, home loans, investment loans, refinance, first home buyers, mortgage advice, property loans, home financing, loan brokers Melbourne, real estate finance, Red Panda Finance, Melbourne property market, mortgage solutions, property investment advice",
 };
 
 export default function RootLayout({ children }) {
