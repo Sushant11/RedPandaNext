@@ -9,16 +9,17 @@ import {
   faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons"; // Import Instagram icon
+import toast from "react-hot-toast"; // Added toast import
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    loanType: "first-home",
-    loanAmount: "500000",
-    state: "vic",
-    firstHome: "yes",
+    loanType: "",
+    loanAmount: "",
+    state: "",
+    firstHome: "",
     message: "",
   });
 
@@ -34,8 +35,9 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Sending");
     console.log(formData);
+    const toastId = toast.loading("Sending...");
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
@@ -44,13 +46,16 @@ export default function Contact() {
       });
 
       const data = await res.json();
+      toast.dismiss(toastId);
+
       if (res.status === 200) {
-        setStatus("Message Sent!");
+        toast.success("Message sent successfully!");
       } else {
-        setStatus(data.message || "Something went wrong.");
+        toast.error(data.message || "Something went wrong.");
       }
     } catch (err) {
-      setStatus("Something went wrong.");
+      toast.dismiss(toastId);
+      toast.error("Something went wrong.");
     }
   };
 
@@ -88,7 +93,6 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="John Smith"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
               </div>
@@ -106,7 +110,6 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="john@example.com"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
               </div>
@@ -123,7 +126,7 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="(555) 123-4567"
+                  required
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
               </div>
@@ -191,28 +194,28 @@ export default function Contact() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                  <option value="vic" className="text-gray-600">
+                  <option value="VIC" className="text-gray-600">
                     Victoria
                   </option>
-                  <option value="nsw" className="text-gray-600">
+                  <option value="NSW" className="text-gray-600">
                     New South Wales
                   </option>
-                  <option value="qld" className="text-gray-600">
+                  <option value="QLD" className="text-gray-600">
                     Queensland
                   </option>
-                  <option value="wa" className="text-gray-600">
+                  <option value="WA" className="text-gray-600">
                     Western Australia
                   </option>
-                  <option value="sa" className="text-gray-600">
+                  <option value="SA" className="text-gray-600">
                     South Australia
                   </option>
-                  <option value="tas" className="text-gray-600">
+                  <option value="TAS" className="text-gray-600">
                     Tasmania
                   </option>
-                  <option value="act" className="text-gray-600">
+                  <option value="ACT" className="text-gray-600">
                     ACT
                   </option>
-                  <option value="nt" className="text-gray-600">
+                  <option value="NT" className="text-gray-600">
                     Northern Territory
                   </option>
                 </select>
@@ -231,10 +234,10 @@ export default function Contact() {
                       type="radio"
                       id="first-home-yes"
                       name="firstHome"
-                      value="yes"
-                      checked={formData.firstHome === "yes"}
+                      value="YES"
+                      checked={formData.firstHome === "YES"}
                       onChange={handleChange}
-                      className="h-4 w-4 text-red-500 focus:ring-2 focus:ring-white"
+                      className="h-4 w-4 text-red-500"
                     />
                     <label htmlFor="first-home-yes" className="ml-2 text-white">
                       Yes
@@ -245,10 +248,10 @@ export default function Contact() {
                       type="radio"
                       id="first-home-no"
                       name="firstHome"
-                      value="no"
-                      checked={formData.firstHome === "no"}
+                      value="NO"
+                      checked={formData.firstHome === "NO"}
                       onChange={handleChange}
-                      className="h-4 w-4 text-red-500 focus:ring-2 focus:ring-white"
+                      className="h-4 w-4 text-red-500"
                     />
                     <label htmlFor="first-home-no" className="ml-2 text-white">
                       No
@@ -262,7 +265,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-white mb-2 font-medium"
                 >
-                  Comments or Notes
+                  Message
                 </label>
                 <textarea
                   id="message"
@@ -270,13 +273,14 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your mortgage needs..."
+                  placeholder="How can we help?"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 ></textarea>
               </div>
 
               <div className="col-span-1 md:col-span-2">
                 <button
+                  disabled={status === "Sending"}
                   type="submit"
                   className="w-full bg-white text-primary hover:bg-white/90 font-bold py-3 px-6 rounded-lg transition duration-300 cursor-pointer"
                 >
