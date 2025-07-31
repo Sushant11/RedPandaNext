@@ -234,8 +234,8 @@ export default function Contact() {
                       type="radio"
                       id="first-home-yes"
                       name="firstHome"
-                      value="YES"
-                      checked={formData.firstHome === "YES"}
+                      value="Yes"
+                      checked={formData.firstHome === "Yes"}
                       onChange={handleChange}
                       className="h-4 w-4 text-red-500"
                     />
@@ -248,8 +248,8 @@ export default function Contact() {
                       type="radio"
                       id="first-home-no"
                       name="firstHome"
-                      value="NO"
-                      checked={formData.firstHome === "NO"}
+                      value="No"
+                      checked={formData.firstHome === "No"}
                       onChange={handleChange}
                       className="h-4 w-4 text-red-500"
                     />
