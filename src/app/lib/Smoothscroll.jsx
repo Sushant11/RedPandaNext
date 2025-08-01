@@ -17,8 +17,8 @@ const SmoothScrollLink = ({ href, className, children }) => {
     if (targetElement) {
       gsap.to(window, {
         scrollTo: {
-          y: targetElement.offsetTop - 70, // Adjust for fixed header or offset
-          autoKill: true, // Stop any ongoing scroll
+          y: targetElement, // More reliable than offsetTop
+          offsetY: 70, // This handles fixed headers // Stop any ongoing scroll
         },
         duration: 1, // Duration of the scroll animation
         ease: "power2.out", // Easing for smooth scroll animation
