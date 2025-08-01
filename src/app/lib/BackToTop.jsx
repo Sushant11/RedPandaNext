@@ -23,20 +23,18 @@ const BackToTop = () => {
       }
     });
 
-    // Scroll to the top when the button is clicked
-    backToTopButton.addEventListener("click", () => {
+    const handleClick = () => {
       gsap.to(window, {
-        scrollTo: {
-          y: 0,
-          autoKill: true,
-        },
+        scrollTo: { y: 0, autoKill: true },
         duration: 1,
         ease: "power2.out",
       });
-    });
+    };
+
+    backToTopButton?.addEventListener("click", handleClick);
 
     return () => {
-      window.removeEventListener("scroll", () => {});
+      backToTopButton?.removeEventListener("click", handleClick);
     };
   }, []);
 
