@@ -5,10 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-ScrollTrigger.normalizeScroll(true);
+gsap.registerPlugin(ScrollToPlugin);
 
 const BackToTop = () => {
   useEffect(() => {
