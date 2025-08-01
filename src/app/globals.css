@@ -74,6 +74,10 @@
   .slick-next {
     display: none !important;
   }
+
+  #back-to-top {
+    display: none;
+  }
 }
 
 select option:hover {
