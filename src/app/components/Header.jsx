@@ -48,8 +48,8 @@ export default function Header() {
     if (targetElement) {
       gsap.to(window, {
         scrollTo: {
-          y: targetElement.offsetTop - 70,
-          autoKill: true,
+          y: targetElement, // More reliable than offsetTop
+          offsetY: 70,
         },
         duration: 1,
         ease: "power2.out",
