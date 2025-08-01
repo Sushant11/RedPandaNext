@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-gsap.registerPlugin(ScrollToPlugin);
+ScrollTrigger.normalizeScroll(true);
 
 const BackToTop = () => {
   useEffect(() => {
@@ -43,7 +45,7 @@ const BackToTop = () => {
   return (
     <button
       id="back-to-top"
-      className="opacity-0 invisible fixed bottom-5 right-5 p-2 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg cursor-pointer transistion"
+      className="opacity-0 invisible fixed bottom-5 right-5 p-2 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg cursor-pointer transition"
     >
       <FontAwesomeIcon icon={faArrowUp} />
     </button>
