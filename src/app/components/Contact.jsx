@@ -8,7 +8,11 @@ import {
   faEnvelope,
   faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons"; // Import Instagram icon
+import {
+  faInstagram,
+  faFacebook,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons"; // Import Instagram icon
 import toast from "react-hot-toast"; // Added toast import
 
 export default function Contact() {
@@ -17,6 +21,7 @@ export default function Contact() {
     email: "",
     phone: "",
     loanType: "",
+    residencyStatus: "",
     loanAmount: "",
     state: "",
     firstHome: "",
@@ -29,7 +34,7 @@ export default function Contact() {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "radio" ? (checked ? value : prev[name]) : value,
+      [name]: value,
     }));
   };
 
@@ -145,17 +150,66 @@ export default function Contact() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
                 >
-                  <option value="first-home" className="text-gray-600">
+                  <option value="First Home" className="text-gray-600">
                     First Home
                   </option>
-                  <option value="refinance" className="text-gray-600">
+                  <option value="Refinance" className="text-gray-600">
                     Refinance
                   </option>
-                  <option value="investment" className="text-gray-600">
+                  <option value="Investment" className="text-gray-600">
                     Investment
                   </option>
-                  <option value="commercial" className="text-gray-600">
-                    Commercial
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="residency-status"
+                  className="block text-white mb-2 font-medium"
+                >
+                  Residency Status
+                </label>
+                <select
+                  id="residency-status"
+                  name="residencyStatus"
+                  value={formData.residencyStatus}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <option value="Australian Citizen" className="text-gray-600">
+                    Australian Citizen
+                  </option>
+                  <option value="Permanent Resident" className="text-gray-600">
+                    Permanent Resident
+                  </option>
+                  <option value="Temporary Resident" className="text-gray-600">
+                    Temporary Resident
+                  </option>
+                  <option
+                    value="Provisional Resident"
+                    className="text-gray-600"
+                  >
+                    Provisional Resident
+                  </option>
+                  <option value="New Zealand Citizen" className="text-gray-600">
+                    New Zealand Citizen (SCV)
+                  </option>
+                  <option
+                    value="Diplomatic or Consular"
+                    className="text-gray-600"
+                  >
+                    Diplomatic or Consular Visa Holder
+                  </option>
+                  <option value="Student" className="text-gray-600">
+                    Student Visa Holder
+                  </option>
+                  <option value="Work Visa" className="text-gray-600">
+                    Work Visa Holder
+                  </option>
+                  <option
+                    value="Refugee / Humanitarian"
+                    className="text-gray-600"
+                  >
+                    Refugee / Humanitarian Visa Holder
                   </option>
                 </select>
               </div>
@@ -173,8 +227,6 @@ export default function Contact() {
                   type="number"
                   value={formData.loanAmount}
                   onChange={handleChange}
-                  min="100000"
-                  max="5000000"
                   step="10000"
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 />
@@ -185,7 +237,7 @@ export default function Contact() {
                   htmlFor="state"
                   className="block text-white mb-2 font-medium"
                 >
-                  State / Location
+                  State / Territory
                 </label>
                 <select
                   id="state"
@@ -221,40 +273,30 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div className="col-span-1 md:col-span-2">
+              <div>
                 <label
                   htmlFor="firstHome"
-                  className="block text-white mb-2 font-medium"
+                  className="block text-white mb-4 font-medium"
                 >
-                  First Home Buyer
+                  First Time Home Buyer?
                 </label>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 space-y-2 sm:space-y-0">
                   <div className="flex items-center">
                     <input
-                      type="radio"
-                      id="first-home-yes"
+                      type="checkbox"
+                      id="first-home"
                       name="firstHome"
-                      value="Yes"
                       checked={formData.firstHome === "Yes"}
-                      onChange={handleChange}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          firstHome: e.target.checked ? "Yes" : "",
+                        }))
+                      }
                       className="h-4 w-4 text-red-500"
                     />
                     <label htmlFor="first-home-yes" className="ml-2 text-white">
                       Yes
-                    </label>
-                  </div>
-                  <div className="flex items-center">
-                    <input
-                      type="radio"
-                      id="first-home-no"
-                      name="firstHome"
-                      value="No"
-                      checked={formData.firstHome === "No"}
-                      onChange={handleChange}
-                      className="h-4 w-4 text-red-500"
-                    />
-                    <label htmlFor="first-home-no" className="ml-2 text-white">
-                      No
                     </label>
                   </div>
                 </div>
@@ -265,7 +307,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-white mb-2 font-medium"
                 >
-                  Message
+                  Anything else you'd like us to know?
                 </label>
                 <textarea
                   id="message"
@@ -273,7 +315,7 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="How can we help?"
+                  placeholder=""
                   className="w-full px-4 py-3 bg-white/20 text-white border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-white placeholder-white placeholder-opacity-70"
                 ></textarea>
               </div>
@@ -306,9 +348,9 @@ export default function Contact() {
                   <div className="ml-4">
                     <h4 className="font-bold text-lg mb-1">Our Office</h4>
                     <p className="opacity-90">
-                      8 Vestige Street
+                      Donnybrook
                       <br />
-                      Melbourne VIC 3064
+                      VIC 3064
                     </p>
                   </div>
                 </div>
@@ -322,7 +364,7 @@ export default function Contact() {
                     <p className="opacity-90">
                       (0484) 941 980
                       <br />
-                      Mon-Fri: 9am - 6pm AEST
+                      Mon-Fri: 9am - 7pm AEST
                     </p>
                   </div>
                 </div>
@@ -334,7 +376,7 @@ export default function Contact() {
                   <div className="ml-4">
                     <h4 className="font-bold text-lg mb-1">Email Us</h4>
                     <p className="opacity-90">
-                      hello@redpandafinance.com
+                      hello@redpandafinance.com.au
                       <br />
                       Response within 24 hours
                     </p>
@@ -348,18 +390,29 @@ export default function Contact() {
                   <a
                     href="https://facebook.com/redpanda.finance"
                     target="_blank"
+                    title="Facebook"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition"
+                    className="w-10 h-10 bg-white/20 rounded-full flex hover:scale-90 items-center justify-center hover:bg-opacity-30 transition"
                   >
                     <FontAwesomeIcon icon={faFacebook} />
                   </a>
                   <a
                     href="https://instagram.com/redpanda.finance"
                     target="_blank"
+                    title="Instagram"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition"
+                    className="w-10 h-10 bg-white/20 rounded-full flex hover:scale-90 items-center justify-center hover:bg-opacity-30 transition"
                   >
                     <FontAwesomeIcon icon={faInstagram} />
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@redpanda.finance"
+                    target="_blank"
+                    title="Tiktok"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/20 rounded-full flex hover:scale-90 items-center justify-center hover:bg-opacity-30 transition"
+                  >
+                    <FontAwesomeIcon icon={faTiktok} />
                   </a>
                 </div>
               </div>

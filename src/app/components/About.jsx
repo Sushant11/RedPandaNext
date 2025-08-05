@@ -24,19 +24,22 @@ export default function About() {
             </h2>
             <div className="w-20 h-1 bg-primary mb-6"></div>
             <p className="text-gray-600 mb-6">
-              Hi, I'm Bigyan, your personal broker here at Red Panda Finance —
-              based right here in Melbourne. Whether you're buying your first
-              home, upgrading, or investing, I'm here to make the process simple
-              and stress-free. With access to over 50 lenders and a deep
-              understanding of the Aussie property market, I'll help you find
-              the right loan, tailored to your goals. Let's chat about what
-              works best for you.
+              Hi, I’m Bigyan, the home loans specialist here at Red Panda
+              Finance – located in Donnybrook, VIC. With over 9 years experience
+              in the finance industry, including accounting and novated leasing,
+              I’ll be there with you every step of the way. Whether you’re
+              buying your first home, upgrading to your dream home, or expanding
+              your property portfolio, I’m here to make the process efficient,
+              simple and stress-free. With access to over 30 lenders and an
+              intimate understanding of the Aussie property market, I’ll help 
+              you find the right finance solution, tailored to your goals. Let’s
+              chat about what you’re setting out to do!
             </p>
 
             <div className="mb-8">
               {[
-                "Access to 50+ lenders across Australia",
-                "Deep knowledge of Melbourne's property market",
+                "Access to 30+ lenders across Australia",
+                "Extensive knowledge of Australain property market",
                 "Personalized service with your best interests at heart",
               ].map((item, index) => (
                 <div key={index} className="flex items-start mb-4">

@@ -9,43 +9,43 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const testimonials = [
   {
     id: 1,
-    name: "K G",
-    role: "First home buyers",
+    name: "T Thapa",
+    role: "Investment property buyer in QLD",
     content:
-      "We had a great experience working with Bigyan Gurung at Red Panda Finance for our home loan. He helped us secure the best possible rate and guided us through every step of the process.",
-    image: "https://randomuser.me/api/portraits/women/43.jpg",
+      "Bigyan Dhai is extremely knowledgeable and helpful. It was a delight to work with him on securing finance for my investment property. His customer service is top notch. He was very informative, had all the answers and was always available after hours as well for support. I would be using his service again for my next property and will recommend him to all my contacts. Bigyan Dhai made the whole process easy and I am forever grateful.",
+    image: "https://randomuser.me/api/portraits/women/2.jpg",
   },
   {
     id: 2,
     name: "Kim Ngan Nguyen",
     role: "First home buyer",
     content:
-      "Bigyan is very knowledgeable and professional. As a first home buyer, I didn't have much understanding about all the process, Bigyan was very good at explaining, which made everything happen smoothly.",
-    image: "https://randomuser.me/api/portraits/women/32.jpg",
+      "Bigyan is very knowledgeable and professional. As a first home buyer, I didn't have much understanding about all the process, Bigyan was very good at explaining, which made everything happen smoothly. Highly recommend.",
+    image: "https://randomuser.me/api/portraits/women/8.jpg",
   },
   {
     id: 3,
     name: "Anil Moktan Tamang",
-    role: "First home buyer",
+    role: "First home buyer in VIC",
     content:
-      "Bigyan Gurung dai from Red Panda Finance made our first home buying experience smooth and stress-free. He helped us secure a great borrowing capacity, even though my partner isn't a PR or Australian citizen.",
-    image: "https://randomuser.me/api/portraits/men/65.jpg",
+      "Bigyan Gurung dai from Red Panda Finance made our first home buying experience smooth and stress-free. 😇 He helped us secure a great borrowing capacity, even though my partner isn’t a PR or Australian citizen — something we thought would be a big challenge. He went above and beyond, sending us detailed CoreLogic reports and guiding us through every step with patience. Thanks to his support, we’ve finally purchased our first home! Highly recommend Red Panda Finance!",
+    image: "https://randomuser.me/api/portraits/men/4.jpg",
   },
   {
     id: 4,
-    name: "Angela Shakya",
-    role: "First home buyer",
+    name: "Ayumi Tamang",
+    role: "First home buyer in SA",
     content:
-      "Bigyan ji was amazing throughout the mortgage process. As first home buyers, we were quite overwhelmed and unsure about the loan process but Bigyan ji was so patient throughout.",
-    image: "https://randomuser.me/api/portraits/women/66.jpg",
+      "I want to extend my heartfelt thanks to Bigyan Gurung for his exceptional service in creating a tailored program and plans that perfectly matched my needs. His deep understanding, attention to detail, and commitment to my goals exceeded my expectations. The process was seamless and stress-free, thanks to their professionalism and expertise. I highly recommend Red Panda Finance for their outstanding, client-focused service during critical times of my journey.",
+    image: "https://randomuser.me/api/portraits/women/17.jpg",
   },
   {
     id: 5,
     name: "Kroshyo Gurung",
-    role: "First home buyer",
+    role: "First home buyer in SA",
     content:
-      "Bigyan was truly amazing! He made the process of buying our first home seamless and stress-free. His expertise, patience, and dedication were exceptional.",
-    image: "https://randomuser.me/api/portraits/women/67.jpg",
+      "Bigyan was truly amazing! He made the process of buying our first home seamless and stress-free. His expertise, patience, and dedication were exceptional, and we couldn’t have achieved this milestone without his guidance. We highly recommend his services to anyone looking for a mortgage broker. Thank you so much, Bigyan :-)",
+    image: "https://randomuser.me/api/portraits/women/35.jpg",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function Testimonials() {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Hear from Melbourne homeowners who've worked with us.
+            Hear from Australian homeowners who've worked with us.
           </p>
         </div>
 

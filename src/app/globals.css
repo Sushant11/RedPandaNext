@@ -55,7 +55,7 @@
 }
 
 .slick-list {
-  height: 350px;
+  height: 450px;
 }
 
 .slick-next:before,
@@ -77,6 +77,10 @@
 
   #back-to-top {
     display: none;
+  }
+
+  .slick-list {
+    height: 550px;
   }
 }
 

@@ -24,29 +24,37 @@ export async function POST(request) {
     });
 
     // Helper function to generate table rows for non-null fields
+    // Helper function to generate table rows for non-null fields
     const buildRow = (label, value) =>
-      value ? `<tr><td style="padding: 8px; font-weight: bold;">${label}</td><td style="padding: 8px;">${value}</td></tr>` : "";
+      value
+        ? `<tr>
+         <td style="padding: 10px 15px; font-weight: bold; color: #333;">${label}</td>
+         <td width="70%" style="padding: 10px 15px; color: #555;">${value}</td>
+       </tr>`
+        : "";
 
     const htmlBody = `
-      <div style="font-family: Arial, sans-serif;">
-        <h4 style="color: #333;">New Contact Form Submission</h4>
-        <table style="border-collapse: collapse; width: 100%;">
-          ${buildRow("Name", name)}
-          ${buildRow("Email", email)}
-          ${buildRow("Phone", phone)}
-          ${buildRow("Loan Type", loanType)}
-          ${buildRow("Loan Amount", loanAmount)}
-          ${buildRow("State", state)}
-          ${buildRow("First Home Buyer?", firstHome)}
-          ${buildRow("Message", message)}
-        </table>
-      </div>
-    `;
+  <div style="background-color: #f5f5f5; padding: 30px; font-family: Arial, sans-serif;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px;">
+      <h3 style="background-color:#fafafa; text-align: center;border-radius: 8px; padding: 10px; margin-bottom: 20px;">New Contact Form Submission</h3>
+      <table style="border-collapse: collapse; width: 100%;">
+        ${buildRow("Name", name)}
+        ${buildRow("Email", email)}
+        ${buildRow("Phone", phone)}
+        ${buildRow("Loan Type", loanType)}
+        ${buildRow("Loan Amount", loanAmount)}
+        ${buildRow("State", state)}
+        ${buildRow("First Home Buyer?", firstHome)}
+        ${buildRow("Message", message)}
+      </table>
+    </div>
+  </div>
+`;
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: "suchitrakar@mit.edu.au",
-      subject: "New Message from Website.",
+      to: "sushantchitrakar@gmail.com",
+      subject: "New Website Inquiry Received",
       html: htmlBody,
     };
 

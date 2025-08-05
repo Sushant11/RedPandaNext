@@ -28,11 +28,11 @@ export default function Hero() {
           }`}
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Smart Mortgage Solutions for Melbourne Homebuyers
+            Smart Mortgage Solutions for Australian Homebuyers
           </h1>
           <p className="text-xl mb-8">
-            Helping home buyers and investors navigate their property journey
-            with smart, tailored solutions.
+            Helping home buyers and property investors navigate their property
+            journey with smart, tailored finance solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <SmoothScrollLink

@@ -11,10 +11,16 @@ import {
 
 const services = [
   {
-    icon: faHome,
-    title: "Home Loans",
+    icon: faUserTie,
+    title: "First Home Buyers",
     description:
-      "Competitive home loan options for first-time buyers and upgraders across Melbourne's property market.",
+      "Special programs and guidance for those entering Australia's competitive property market.",
+  },
+  {
+    icon: faBuilding,
+    title: "Investment Loans",
+    description:
+      "Specialized property investment loans to help grow your portfolio in Australia and beyond.",
   },
   {
     icon: faSyncAlt,
@@ -23,28 +29,22 @@ const services = [
       "Lower your interest rate, reduce monthly payments, or access equity with our refinance solutions.",
   },
   {
-    icon: faBuilding,
-    title: "Investment Loans",
+    icon: faHandHoldingUsd,
+    title: "Land & Construction Loans",
     description:
-      "Specialized property investment loans to help grow your portfolio in Melbourne and beyond.",
+      "Tailored financing solutions for building your dream home in Victoria.",
+  },
+  {
+    icon: faHome,
+    title: "Other Loans",
+    description:
+      "Competitive car loans, personal loans, and SMSF loan solutions tailored to your financial goals.",
   },
   {
     icon: faChartLine,
     title: "Financial Guidance",
     description:
       "Personalized advice to help you make informed decisions about your property journey.",
-  },
-  {
-    icon: faUserTie,
-    title: "First Home Buyers",
-    description:
-      "Special programs and guidance for those entering Melbourne's competitive property market.",
-  },
-  {
-    icon: faHandHoldingUsd,
-    title: "Construction Loans",
-    description:
-      "Tailored financing solutions for building your dream home in Victoria.",
   },
 ];
 
@@ -58,8 +58,8 @@ export default function Services() {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Comprehensive mortgage solutions tailored to Melbourne's property
-            market.
+            Comprehensive mortgage solutions tailored to Australian property
+            buyer.
           </p>
         </div>
 

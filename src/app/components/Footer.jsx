@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebookF,
+  faInstagram,
+  faTiktok,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
   return (
@@ -175,6 +179,14 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition"
             >
               <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a
+              href="https://www.tiktok.com/@redpanda.finance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition"
+            >
+              <FontAwesomeIcon icon={faTiktok} />
             </a>
           </div>
         </div>
