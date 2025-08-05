@@ -53,7 +53,7 @@ export async function POST(request) {
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: "sushantchitrakar@gmail.com",
+      to: "hello@redpandafinance.com.au",
       subject: "New Website Inquiry Received",
       html: htmlBody,
     };
