@@ -34,7 +34,7 @@ const testimonials = [
   {
     id: 4,
     name: "Ayumi Tamang",
-    role: "First home buyer in SA",
+    role: "Investment property buyer",
     content:
       "I want to extend my heartfelt thanks to Bigyan Gurung for his exceptional service in creating a tailored program and plans that perfectly matched my needs. His deep understanding, attention to detail, and commitment to my goals exceeded my expectations. The process was seamless and stress-free, thanks to their professionalism and expertise. I highly recommend Red Panda Finance for their outstanding, client-focused service during critical times of my journey.",
     image: "https://randomuser.me/api/portraits/women/17.jpg",
