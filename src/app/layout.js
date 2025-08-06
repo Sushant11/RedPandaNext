@@ -17,7 +17,7 @@ export const metadata = {
     "mortgage brokers Australia, home loans, investment loans, refinance, first home buyers, mortgage advice, property loans, home financing, loan brokers Australia, real estate finance, Red Panda Finance, Australia property market, mortgage solutions, property investment advice",
   openGraph: {
     url: "https://red-panda-next.vercel.app",
-    siteName: "Red Panda Finance",
+    siteName: "Test-Red Panda Finance",
     images: [
       {
         url: "https://red-panda-next.vercel.app/og-image.png", // update with your image path
