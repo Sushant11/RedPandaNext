@@ -20,9 +20,16 @@ export default function Footer() {
               />
               <span className="text-xl font-bold">Red Panda Finance</span>
             </div>
-            <p className="text-gray-400 max-w-xs">
+            <p className="text-gray-300 max-w-lg">
               Helping home buyers and investors navigate their property journey
               with smart, tailored solutions.
+            </p>
+            <p className="text-gray-400 max-w mt-2">
+              Credit Representative No. 529844 of Buyers Choice Licencing Pty
+              Ltd.
+            </p>
+            <p className="text-gray-400">
+              ACN 626 172 281 (Australian Credit License No. 509484)
             </p>
           </div>
 
