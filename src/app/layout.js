@@ -16,11 +16,11 @@ export const metadata = {
   keywords:
     "mortgage brokers Australia, home loans, investment loans, refinance, first home buyers, mortgage advice, property loans, home financing, loan brokers Australia, real estate finance, Red Panda Finance, Australia property market, mortgage solutions, property investment advice",
   openGraph: {
-    url: "https://red-panda-next.vercel.app",
-    siteName: "Test-Red Panda Finance",
+    url: "https://redpandafinance.com.au",
+    siteName: "Red Panda Finance",
     images: [
       {
-        url: "https://red-panda-next.vercel.app/og-image.png", // update with your image path
+        url: "https://redpandafinance.com.au/og-image.png", // update with your image path
         width: 1200,
         height: 630,
         alt: "Red Panda Finance",
@@ -34,7 +34,7 @@ export const metadata = {
     title: "Red Panda Finance | Australian Mortgage Brokers",
     description:
       "Helping home buyers and investors navigate their property journey.",
-    images: ["https://red-panda-next.vercel.app/og-image.png"],
+    images: ["https://redpandafinance.com.au/og-image.png"],
   },
 };
 
