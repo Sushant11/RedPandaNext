@@ -36,6 +36,7 @@
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/bannerimg.jpg");
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
