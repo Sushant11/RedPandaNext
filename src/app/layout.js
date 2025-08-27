@@ -10,7 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Red Panda Finance | Australain Mortgage Brokers",
+  title: "Red Panda Finance | Australian Mortgage Brokers",
   description:
     "Helping home buyers and investors navigate their property journey",
   keywords:
