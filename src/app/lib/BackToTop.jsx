@@ -41,7 +41,7 @@ const BackToTop = () => {
   return (
     <button
       id="back-to-top"
-      className="opacity-0 invisible fixed bottom-5 right-5 p-2 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg cursor-pointer transition"
+      className="opacity-0 invisible fixed bottom-6 right-6 w-11 h-11 flex items-center justify-center bg-[#0d6e6e] hover:bg-[#0a5a5a] text-white rounded-full shadow-lg shadow-[#0d6e6e]/30 cursor-pointer transition-all duration-300"
     >
       <FontAwesomeIcon icon={faArrowUp} />
     </button>

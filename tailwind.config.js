@@ -4,7 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#CD1C26",
+        primary: "#cd1c26",
+        accent: "#cd1c26",
+        cream: "#faf7f2",
+        ink: "#1a1a2e",
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
       },
     },
   },

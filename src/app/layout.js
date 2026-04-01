@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BackToTop from "./lib/BackToTop";
@@ -7,7 +7,18 @@ import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({ subsets: ["latin"] });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Red Panda Finance | Australian Mortgage Brokers",
@@ -20,7 +31,7 @@ export const metadata = {
     siteName: "Red Panda Finance",
     images: [
       {
-        url: "https://redpandafinance.com.au/og-image.png", // update with your image path
+        url: "https://redpandafinance.com.au/og-image.png",
         width: 1200,
         height: 630,
         alt: "Red Panda Finance",
@@ -40,16 +51,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
         <link rel="icon" href="/mainlogo.png" />
-        {/* Font Awesome CDN if using (better to use react-icons) */}
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
       </head>
-      <body>
+      <body style={{ fontFamily: "var(--font-dm-sans), system-ui, sans-serif" }}>
         <Header />
         <Analytics />
         <Toaster position="bottom-center" />
